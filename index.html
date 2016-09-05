@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>颜色选择器</title>	
+	<link rel="stylesheet" type="text/css" href="jquery.fastColorPicker.css">
+</head>
+<body>
+	<div id='my-color-select'></div>
+</body>
+</html>
+<script src="jquery.min.js"></script>
+<script type="text/javascript" src='jquery.fastColorPicker.js'></script>
+<script type="text/javascript">
+	let colorArray=['#3f51b5','#ffffff','#ffa500','#696969','#4d3900','#005737','#4169e1','#b399ff','#a4c639'];
+	var picker=$('#my-color-select').fastColorPicker(colorArray,{});
+</script>
