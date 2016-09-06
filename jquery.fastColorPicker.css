@@ -1,6 +1,12 @@
 html{
 	height: 100%;
 }
+.fast-color-picker *{
+	box-sizing: border-box;	
+}
+.fast-color-picker{
+	display: inline-block;
+}
 .color-item{
 	display: inline-block;
 	border: 3px solid #eee;
@@ -11,13 +17,12 @@ html{
 .color-item:hover{
 	/*border: 3px solid ;*/
 }
-.color-selected-div{
-	/*height: 22px;*/
-	border:1px solid #777;
-	/*width: 60px;*/
+.color-selected-div{	
+	border:1px solid #777;	
+	height: 100%;
+	width: 100%;
 }
-.color-items-div{		
-	/*width: 130px;*/
+.box-style-true{
 	border: 1px solid #ccc;
 	border-radius: 6px;
 	padding: 4px 4px 0 4px;
@@ -27,6 +32,16 @@ html{
 	background-color: #eee;
 	z-index:100;
 }
+/*.color-items-div{		
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	padding: 4px 4px 0 4px;
+	box-shadow: 1px 2px #999;
+	margin-top: 2px;
+	position: absolute;
+	background-color: #eee;
+	z-index:100;
+}*/
 .bs-style-shell{
 	border-radius: 6px; 
 	padding: 4px 8px; 
@@ -35,7 +50,7 @@ html{
 }
 
 .item-hover-false:hover{
-	/*border: 3px solid ;*/
+
 }
 .item-hover-true:hover{
 	border: 3px solid ;
@@ -58,6 +73,10 @@ html{
 }
 .btn-height-large .color-selected-div{
 	height: 40px;
+}
+.btn-border-false{	 
+	padding: 0; 
+	border: none; 	
 }
 
 .box-width-default{

@@ -38,35 +38,37 @@
 		},
 		createPicker:function(){			
 			$.extend(true,this.defaultOptions, this.customOptions);			
-			console.log(this.defaultOptions);
+			
 			
 			_this=this;
-			this.element.setAttribute('id',this.id);
-			this.btnShell=document.createElement('div');
-			this.btnShell.setAttribute('class','bs-style-shell');
-			this.btnShell.innerHTML='<div class="color-selected-div"></div>';
-			let selectedDiv=this.btnShell.getElementsByClassName('color-selected-div')[0];			
-			 _this.itemsDiv=document.createElement('div');
+			_this.btnShell=document.createElement('div');
+			_this.btnShell.setAttribute('class','bs-style-shell');
+			_this.btnShell.innerHTML='<div class="color-selected-div"></div>';
+			let selectedDiv=_this.btnShell.getElementsByClassName('color-selected-div')[0];			
+			_this.itemsDiv=document.createElement('div');
 			_this.itemsDiv.setAttribute('class','color-items-div');
 			_this.itemsDiv.style.display='none';
-			this.element.appendChild(this.btnShell);
-			this.element.appendChild(_this.itemsDiv);
-			// this.applyOptions(_this.itemsDiv,this.defaultOptions.box,'box');		
-			this.applyOptions(_this.itemsDiv,this.defaultOptions.box,'box');	
-			this.applyOptions(this.btnShell,this.defaultOptions.btn,'btn');
-			this.btnShell.addEventListener('click',function(){
+			_this.element.appendChild(_this.btnShell);
+			_this.element.appendChild(_this.itemsDiv);
+			// _this.applyOptions(_this.itemsDiv,this.defaultOptions.box,'box');		
+			_this.applyOptions(_this.itemsDiv,_this.defaultOptions.box,'box');	
+			_this.applyOptions(_this.btnShell,_this.defaultOptions.btn,'btn');
+			_this.btnShell.addEventListener('click',function(){
 				// _this.itemsDiv.style.display=(_this.itemsDiv.style.display=='inline-block'?'none':'inline-block');
-				let div=document.getElementById(_this.id).getElementsByClassName('color-items-div')[0];
-				div.style.display=div.style.display=='inline-block'?'none':'inline-block';
-				console.log(_this.id);
+				// _this.itemsDiv.style.display=(_this.itemsDiv.style.display=='inline-block'?'none':'inline-block');
+				$(this).next('.color-items-div').css('display',$(this).nextUntil('.color-items-div').css('display')=='inline-block'?'none':'inline-block')
+				console.log('this');
+				console.log(this);
+				console.log('_this');
+				console.log(_this);
 			})
-			for(let i=0,m=this.colorArray.length;i<m;i++){
+			for(let i=0,m=_this.colorArray.length;i<m;i++){
 				let itemSpan=document.createElement('span');
 				itemSpan.setAttribute('class','color-item');
-				itemSpan.setAttribute('tag',this.colorArray[i]);			
-				itemSpan.style.backgroundColor=this.colorArray[i];			
-				itemSpan.style.color=this.colorArray[i];			
-				this.applyOptions(itemSpan,this.defaultOptions.item,'item');
+				itemSpan.setAttribute('tag',_this.colorArray[i]);			
+				itemSpan.style.backgroundColor=_this.colorArray[i];			
+				itemSpan.style.color=_this.colorArray[i];			
+				_this.applyOptions(itemSpan,_this.defaultOptions.item,'item');
 				itemSpan.onclick=function(e){
 					selectedDiv.style.backgroundColor=this.getAttribute('tag');
 					selectedDiv.setAttribute('item-selected',this.getAttribute('tag'));
@@ -74,12 +76,13 @@
 				}
 				_this.itemsDiv.appendChild(itemSpan);
 				if(i==0){
-					selectedDiv.style.backgroundColor=this.colorArray[i];
-					selectedDiv.setAttribute('item-selected',this.colorArray[i]);
+					selectedDiv.style.backgroundColor=_this.colorArray[i];
+					selectedDiv.setAttribute('item-selected',_this.colorArray[i]);
 				}
 			}			
 			document.addEventListener('click',_this.hideitemsByClick);			
-			return this.element;
+			console.log(this);
+			return _this.element;
 		},
 		applyOptions:function (ele,opt,name) {			
 			for(prop in opt){				
@@ -109,11 +112,11 @@
 			}
 		},
 		getValue:function(){
-			let selectedDiv=this.btnShell.getElementsByClassName('color-selected-div')[0];			
+			let selectedDiv=_this.btnShell.getElementsByClassName('color-selected-div')[0];			
 			return selectedDiv.getAttribute('item-selected');
 		},
 		setValue:function(color){
-			let selectedDiv=this.btnShell.getElementsByClassName('color-selected-div')[0];
+			let selectedDiv=_this.btnShell.getElementsByClassName('color-selected-div')[0];
 			selectedDiv.setAttribute('item-selected',color);
 			selectedDiv.style.backgroundColor=color;
 		},
@@ -124,14 +127,14 @@
 			}
 		},
 		hideitems:function(){
-			this.element.getElementsByClassName('color-items-div')[0].style.display='none';
+			_this.element.getElementsByClassName('color-items-div')[0].style.display='none';
 		}
 	}
 
 	$.fn.fastColorPicker=function(colorArray,items){
 		let colorPicker=new ColorPicker(this[0],colorArray,items);
-		colorPicker.id='color-picker'+Math.floor(Math.random()*9999999);
-		colorPicker.createPicker();		
+		colorPicker.id=this[0].getAttribute('id');
+		colorPicker.createPicker();
 		return colorPicker;
 	}
 })(jQuery, window, document);
