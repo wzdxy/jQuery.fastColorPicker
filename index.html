@@ -10,8 +10,8 @@
 	<div id='my-color-select' class='fast-color-picker'></div>
 	<div style='height:140px'></div>
 	<div id='my-color-select2' class='fast-color-picker'></div>
-	<div style='height:140px'></div>
-	<div id='my-color-select3' class='fast-color-picker'></div>
+	<!--<div style='height:140px'></div>
+	<div id='my-color-select3' class='fast-color-picker'></div>-->
 </body>
 </html>
 <script src="jquery.min.js"></script>
@@ -66,9 +66,9 @@
 			// style:'false'
 		}
 	}
-	var picker=$('#my-color-select').fastColorPicker(colorArray,{});
-	// var picker2=$('#my-color-select2').fastColorPicker(colorArray,option2);
-	// var picker3=$('#my-color-select3').fastColorPicker(colorArray,option3);
+	var picker=$('#my-color-select').fastColorPicker(colorArray,option3);
+	var picker2=$('#my-color-select2').fastColorPicker(colorArray,{});
+	// var picker3=$('#my-color-select3').fastColorPicker(colorArray,{});
 	// console.log(picker);
 	// console.log(picker2);
 	// console.log(picker3);
